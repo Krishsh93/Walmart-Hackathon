@@ -25,4 +25,8 @@ wishlistRouter.get("/", async (req, res) => {
   }
 });
 
+wishlistRouter.post("/add", async (req, res) => {
+  
+})
+
 module.exports = wishlistRouter;
