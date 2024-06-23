@@ -1,16 +1,18 @@
 // Modules
+require("dotenv").config();
 const express = require("express");
 const { connectMongoose } = require("./src/config/database");
-const productRouter = require("./src/routes/products");
-const wishlistRouter = require("./src/routes/wishlist");
-require("dotenv").config();
+const cors = require("cors");
 
 // Variables
 const app = express();
 const PORT = process.env.PORT || 8080;
+const productRouter = require("./src/routes/products");
+const wishlistRouter = require("./src/routes/wishlist");
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 // RESTful API's
 app.get("/", (req, res) => {
