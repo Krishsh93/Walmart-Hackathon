@@ -1,6 +1,7 @@
 // Modules
 const { Router } = require("express");
 const { connectMongoClient } = require("../config/database");
+const url = require("url");
 
 // Routers and Variables
 const productRouter = Router();
@@ -9,18 +10,48 @@ const productRouter = Router();
 productRouter.get("/", async (req, res) => {
   let client;
   try {
+    const parseURL = url.parse(req.url, true);
+    const query = parseURL.query;
+
+    // Getting various queries for filtering and sorting the data
+    const { category, order, page } = query;
+
+    // Query for getting the desired data
+    const categoryQuery = category
+      ? { $exists: true, $eq: category }
+      : { $exists: true, $ne: category };
+
     client = await connectMongoClient();
-    const products = await client
+    let products = await client
       .db("walmart")
       .collection("products")
-      .find({})
+      .find({ category: categoryQuery })
+      .skip((parseInt(page ?? 1) - 1) * 20)
+      .limit(20)
       .toArray();
 
-    return res.json({ message: "Data fetched successfully", products });
+    if (order) {
+      if (order === "asc")
+        products = products.sort((a, b) => a.price - b.price);
+      else products = products.sort((a, b) => b.price - a.price);
+    }
+
+    const total = await client
+      .db("walmart")
+      .collection("products")
+      .countDocuments();
+
+    return res.json({
+      message: "Data fetched successfully",
+      products,
+      limit: 20,
+      total,
+      page: parseInt(page ?? 1),
+    });
   } catch (error) {
     throw new Error("Could not fetch products", error.message);
   } finally {
-    client.close();
+    await client.close();
     console.log(`Database disconnected`);
   }
 });
