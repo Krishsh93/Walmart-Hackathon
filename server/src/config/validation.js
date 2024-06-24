@@ -2,10 +2,17 @@
 const { body } = require("express-validator");
 
 // Validation Array
-const validationArray = [
+const validateUser = [
   body("name").isString().withMessage("Invalid name"),
   body("email").isEmail().withMessage("Email is not valid"),
-  body("password").isString().withMessage("Inappropriate password"),
+  body("password")
+    .isLength({ min: 5 })
+    .withMessage("Password must be at least 5 characters long"),
 ];
 
-module.exports = validationArray;
+const validateLogin = [
+  body("email").isEmail().withMessage("Email is not valid"),
+  body("password").isString().withMessage("Wrong password"),
+];
+
+module.exports = { validateUser, validateLogin };

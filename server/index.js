@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const productRouter = require("./src/routes/products");
 const wishlistRouter = require("./src/routes/wishlist");
+const userRouter = require("./src/routes/users");
 
 // Middlewares
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/products", productRouter);
 app.use("/wishlist", wishlistRouter);
+app.use("/user", userRouter);
 
 // Turn the server UP
 app.listen(PORT, () => {

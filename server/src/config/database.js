@@ -5,6 +5,7 @@ require("dotenv").config();
 
 // Variables
 const URI = process.env.URI;
+const MONGO_URI = process.env.MONGO_URI;
 
 // Functions
 const connectMongoClient = async () => {
@@ -25,7 +26,7 @@ const connectMongoClient = async () => {
 
 const connectMongoose = () => {
   // Connecting to mongoose
-  mongoose.connect(URI);
+  mongoose.connect(MONGO_URI);
   console.log(`Connected to Database`);
 };
 

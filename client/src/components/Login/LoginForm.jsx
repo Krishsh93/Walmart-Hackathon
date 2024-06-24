@@ -4,10 +4,9 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Link,
   Text,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/login";
 
@@ -28,10 +27,14 @@ const LoginForm = () => {
     event.preventDefault();
     dispatch(loginUser(credentials));
     setInfo(true);
-    setTimeout(() => {
-      setInfo(false);
-    }, 1500);
   };
+
+  useEffect(() => {
+    if (info)
+      setTimeout(() => {
+        setInfo(false);
+      }, 1500);
+  }, [info]);
 
   if (login.access_token)
     return (

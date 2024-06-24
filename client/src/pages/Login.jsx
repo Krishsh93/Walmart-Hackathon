@@ -7,6 +7,7 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
+
 import LoginForm from "../components/Login/LoginForm";
 import RegisterForm from "../components/Login/RegisterForm";
 import { useNavigate } from "react-router-dom";
