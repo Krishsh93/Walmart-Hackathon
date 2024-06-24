@@ -14,6 +14,9 @@ const { validateUser, validateLogin } = require("../config/validation");
 userRouter.post("/login", validateLogin, async (req, res) => {
   let client, errors;
   try {
+    // Connect to the MongoClient
+    client = await connectMongoClient();
+
     // Validate login details
     errors = validationResult(req);
     if (!errors.isEmpty())
@@ -21,9 +24,6 @@ userRouter.post("/login", validateLogin, async (req, res) => {
 
     // Getting the user credentials
     const { email, password } = req.body;
-
-    // Connect to the MongoClient
-    client = await connectMongoClient();
 
     // Checking if the user is registered
     const user = await client
@@ -45,13 +45,16 @@ userRouter.post("/login", validateLogin, async (req, res) => {
   } catch (error) {
     throw new Error("Could not find user", error.message);
   } finally {
-    if (errors.isEmpty()) await client.close();
+    await client.close();
     console.log(`Database disconnected`);
   }
 });
 
 userRouter.post("/register", validateUser, async (req, res) => {
   try {
+    // Connecting the MongoDB database
+    connectMongoose();
+
     // Checking if user details are valid
     const errors = validationResult(req);
     if (!errors.isEmpty())
@@ -59,9 +62,6 @@ userRouter.post("/register", validateUser, async (req, res) => {
         message: "User details are not valid",
         errors: errors.errors,
       });
-
-    // Connecting the MongoDB database
-    connectMongoose();
 
     // Getting the user credentials from the request body
     const { name, email, password } = req.body;

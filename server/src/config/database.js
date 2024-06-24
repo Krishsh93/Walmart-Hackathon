@@ -9,10 +9,9 @@ const MONGO_URI = process.env.MONGO_URI;
 
 // Functions
 const connectMongoClient = async () => {
-  let client;
   try {
     // Connecting the MongoClient with mongoDB
-    client = await new MongoClient(URI).connect();
+    let client = await new MongoClient(URI).connect();
     console.log(`Connected to MongoDB`);
 
     return client;

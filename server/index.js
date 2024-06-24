@@ -1,14 +1,13 @@
 // Modules
 require("dotenv").config();
 const express = require("express");
-const { connectMongoose } = require("./src/config/database");
 const cors = require("cors");
 
 // Variables
 const app = express();
 const PORT = process.env.PORT || 8080;
 const productRouter = require("./src/routes/products");
-const wishlistRouter = require("./src/routes/wishlist");
+const wishlistsRouter = require("./src/routes/wishlist");
 const userRouter = require("./src/routes/users");
 
 // Middlewares
@@ -21,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", productRouter);
-app.use("/wishlist", wishlistRouter);
+app.use("/wishlist", wishlistsRouter);
 app.use("/user", userRouter);
 
 // Turn the server UP
