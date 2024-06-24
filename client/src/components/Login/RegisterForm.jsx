@@ -6,7 +6,7 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/actions/register.user";
 
@@ -19,23 +19,28 @@ const RegisterForm = () => {
   const [info, setInfo] = useState(false);
 
   const [credentials, setCredentials] = useState({
+    name: "",
     email: "",
     password: "",
   });
 
   const handleChange = (event) => {
-    const { type, value } = event.target;
-    setCredentials({ ...credentials, [type]: value });
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(registerUser(credentials));
     setInfo(true);
-    setTimeout(() => {
-      setInfo(false);
-    }, 1500);
   };
+
+  useEffect(() => {
+    if (info)
+      setTimeout(() => {
+        setInfo(false);
+      }, 1500);
+  }, [info]);
 
   if (loginDetails.access_token) {
     return (
@@ -49,10 +54,21 @@ const RegisterForm = () => {
     <Box>
       <form>
         <FormControl isRequired>
+          <FormLabel>Full Name:</FormLabel>
+          <Input
+            value={credentials.name}
+            type="text"
+            name="name"
+            placeholder="Enter Full Name"
+            onChange={handleChange}
+          />
+        </FormControl>
+        <FormControl isRequired>
           <FormLabel>Email Address:</FormLabel>
           <Input
             value={credentials.email}
             type="email"
+            name="email"
             placeholder="Enter Email Address"
             onChange={handleChange}
           />
@@ -62,6 +78,7 @@ const RegisterForm = () => {
           <Input
             value={credentials.password}
             type="password"
+            name="password"
             placeholder="Enter Password"
             onChange={handleChange}
           />
@@ -79,6 +96,8 @@ const RegisterForm = () => {
 
         <Text color={"red"} mt={2} textAlign={"center"}>
           <b>{info ? newUser.message : null}</b>
+          <br />
+          <b>{newUser.loading ? "Please wait..." : null}</b>
         </Text>
       </form>
     </Box>

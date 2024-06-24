@@ -1,5 +1,5 @@
 import { Box, Button, Flex, FormControl, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAddress } from "../../redux/actions/update.address";
 
@@ -7,6 +7,8 @@ const Address = () => {
   const dispatch = useDispatch();
   const loginDetails = useSelector((store) => store.login);
   const addressDetails = useSelector((store) => store.addressDetails);
+
+  console.log(addressDetails);
 
   const [done, setDone] = useState(false);
 
@@ -27,11 +29,14 @@ const Address = () => {
     event.preventDefault();
     dispatch(updateAddress(loginDetails.email, address));
     setDone(true);
-
-    setTimeout(() => {
-      setDone(false);
-    }, 1000);
   };
+
+  useEffect(() => {
+    if (done)
+      setTimeout(() => {
+        setDone(false);
+      }, 1000);
+  }, [done]);
 
   if (addressDetails.status)
     return (

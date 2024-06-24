@@ -33,4 +33,6 @@ export const UPDATE_PAYMENT = "UPDATE_PAYMENT";
 export const EMPTY_BAG = "EMPTY_BAG";
 
 // ActionType for registering new user
+export const REG_LOADING = "REG_LOADING";
 export const REG_USER = "REG_USER";
+export const REG_ERROR = "REG_ERROR";

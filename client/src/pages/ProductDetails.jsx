@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SingleProductCard from "../components/ProductDetails/SingleProductCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,9 @@ const ProductDetails = () => {
 
   return (
     <div className="ProductDetails">
-      <Text className="goBack" onClick={() => history.back()}>GO BACK</Text>
+      <Text className="goBack" onClick={() => history.back()}>
+        GO BACK
+      </Text>
 
       <SingleProductCard key={id} {...product.productDetails[0]} />
 

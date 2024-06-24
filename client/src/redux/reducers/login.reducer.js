@@ -10,6 +10,7 @@ const initState = {
   message: "",
   access_token: null,
   email: "",
+  name: "",
 };
 
 const loginReducer = (state = initState, { type, payload }) => {
@@ -22,6 +23,7 @@ const loginReducer = (state = initState, { type, payload }) => {
         message: payload.message,
         access_token: payload.access_token,
         email: payload.email,
+        name: payload.name,
       };
     case FETCH_LOGIN_ERROR:
       return { ...initState, error: true };

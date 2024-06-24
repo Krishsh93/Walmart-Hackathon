@@ -87,6 +87,7 @@ const LoginForm = () => {
 
       <Text color={"red"} textAlign={"center"} mt={2}>
         {info ? login.message : null}
+        {login.loading ? "Please wait..." : null}
       </Text>
     </div>
   );

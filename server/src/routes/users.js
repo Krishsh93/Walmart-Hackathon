@@ -1,8 +1,10 @@
 // Modules
+require("dotenv").config();
 const { Router } = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
 
 // Variables
 const userRouter = Router();
@@ -41,7 +43,18 @@ userRouter.post("/login", validateLogin, async (req, res) => {
     if (!result)
       return res.json({ message: "Invalid credentials", loggedIn: false });
 
-    return res.json({ message: "Login successful", loggedIn: true });
+    const access_token = jwt.sign(
+      { name: user.name, email: email },
+      process.env.SECRET_CODE
+    );
+
+    return res.json({
+      message: "Login successful",
+      loggedIn: true,
+      access_token,
+      email,
+      name: user.name,
+    });
   } catch (error) {
     throw new Error("Could not find user", error.message);
   } finally {
@@ -61,6 +74,7 @@ userRouter.post("/register", validateUser, async (req, res) => {
       return res.json({
         message: "User details are not valid",
         errors: errors.errors,
+        status: false,
       });
 
     // Getting the user credentials from the request body
@@ -73,7 +87,7 @@ userRouter.post("/register", validateUser, async (req, res) => {
     if (user)
       return res.json({
         message: "You are a registered user",
-        registration: false,
+        status: false,
       });
 
     // Hashing the password
@@ -89,7 +103,7 @@ userRouter.post("/register", validateUser, async (req, res) => {
       message: "User registered",
       name,
       email,
-      registration: true,
+      status: true,
     });
   } catch (error) {
     throw new Error("Registration failed", error.message);
