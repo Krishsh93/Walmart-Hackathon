@@ -2,11 +2,11 @@
 
 ![image](https://github.com/skashyap9934/walmart/assets/119413052/ad0b9e2d-fbaf-48a4-af58-e6d543aacc1b)
 
-<h1 align="center">Walmart Clone Script to Run a Successful Grocery Delivery Business</h1>
+<h1>Walmart Clone Script to Run a Successful Grocery Delivery Business</h1>
 
 The way people shop for groceries is changing a lot because of the online. More and more people are choosing to buy their groceries online instead of going to the store. Delivery services for groceries are becoming super popular and growing fast. If you're thinking about starting your own business and want to take advantage of this trend, a Walmart Clone Script can be just the thing you need.
 
-<h1 align="center">What is a Walmart Clone Script?</h1>
+<h1>What is a Walmart Clone Script?</h1>
 
 Imagine an online network developed particularly for grocery delivery that mirrors Walmart's success. That is the core of the Walmart Clone Script. It's a pre-built software system that looks like the features of Walmart, allowing you to start your own online grocery delivery service fast and easily.
 
