@@ -20,8 +20,9 @@ Creating an e-commerce platform from scratch can be a time-consuming and costly 
 Scalability: The script is adaptable to your company's growth. It allows you to customize the features and functionality to meet your requirements.
 
 <h2>Conclusion</h2>
-A Walmart Clone App can be an effective tool for starting your online grocery delivery business. You can establish a name for yourself in the rapidly expanding online grocery industry by making the most of its features, keeping strategic planning into practice, and keeping customer pleasure first. Remember that convenience is supreme. You can become the go-to grocery delivery service for busy customers looking for a smooth shopping experience by providing a user-friendly platform, a diverse product range, and rapid delivery.
+* A Walmart Clone App can be an effective tool for starting your online grocery delivery business.
+* You can establish a name for yourself in the rapidly expanding online grocery industry by making the most of its features, keeping strategic planning into practice, and keeping customer pleasure first. Remember that convenience is supreme.
+* You can become the go-to grocery delivery service for busy customers looking for a smooth shopping experience by providing a user-friendly platform, a diverse product range, and rapid delivery.
+* Are you considering starting a grocery delivery business soon? Sangvish Walmart Clone is the perfect solution for your business requirements. It's fully customizable to match your brand and comes with 100% customization options. In the realm of clone script providers, Sangvish stands out by offering one year of free tech support. To learn more about how to kick-start your business and to see a free live demo of our grocery delivery service, please schedule a meeting with us.
 
-Are you considering starting a grocery delivery business soon? Sangvish Walmart Clone is the perfect solution for your business requirements. It's fully customizable to match your brand and comes with 100% customization options. In the realm of clone script providers, Sangvish stands out by offering one year of free tech support. To learn more about how to kick-start your business and to see a free live demo of our grocery delivery service, please schedule a meeting with us.
-
-Explore our live demo to start your dream project! https://sangvish.com/walmart-clone/
+* Explore our live demo to start your dream project! https://walmart-kashyap.netlify.app/
